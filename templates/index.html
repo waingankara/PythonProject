@@ -6,7 +6,7 @@
                     <div class="col-lg-12">
                         <div class="card card-outline-info">
                             <div class="card-header">
-                                <h3 class="mb-0 text-white">Adarsh Vidyalay</h3>
+                                <h3 class="mb-0 text-white">Adarsh Vidyalaya</h3>
                             </div>
                             <div class="card-body">
                                 <form novalidate name="avForm">
@@ -59,7 +59,7 @@
                                                 <div ng-class="{'form-group': true, 'has-success' : avForm.doh.$valid ,'has-danger': !avForm.doh.$valid && (avForm.doh.$touched || isSubmitted)}">
                                                     <label class="control-label">Please select date of homework </label>
                                                     <input required type="date"  ng-model="doh"  name="doh" class="form-control" placeholder="dd/mm/yyyy">
-                                                    <small  ng-if="!avForm.dohsd.$valid && (avForm.doh.$touched || isSubmitted)" class="form-control-feedback"> Please, enter date of homework. </small>
+                                                    <small  ng-if="!avForm.doh.$valid && (avForm.doh.$touched || isSubmitted)" class="form-control-feedback"> Please, enter date of homework. </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -68,7 +68,7 @@
                                          <div class="row">
                                            <div class="col-md-6 ">
                                                 <div ng-class="{'form-group': true, 'has-success' : avForm.name.$valid ,'has-danger': !avForm.name.$valid && (avForm.name.$touched || isSubmitted)}">
-                                                    <label>Your Name</label>
+                                                    <label>Teacher Name</label>
                                                     <input required type="text"  ng-model="name" name="name"  class="form-control">
                                                     <small  ng-if="!avForm.name.$valid && (avForm.name.$touched || isSubmitted)" class="form-control-feedback"> Please, enter Name. </small>
                                                 </div>
