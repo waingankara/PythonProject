@@ -20,7 +20,7 @@ angular.module('vidyalayData', []).controller('questionaire', [
         $scope.toh = "Video";
         $scope.dessoh = "Video Homework";
     }
-    generateHomework();
+    //generateHomework();
 
     function resetHomework(){
         $scope.standard = "";
@@ -66,6 +66,7 @@ angular.module('vidyalayData', []).controller('questionaire', [
 					confirmButtonClass: "btn btn-info",
 					buttonsStyling: false
 				   }).catch(swal.noop)
+				   resetHomework();
                  $scope.isSubmitted = true;
             });
         }
