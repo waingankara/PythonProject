@@ -9,37 +9,37 @@
                                 <h3 class="mb-0 text-white">Adarsh Vidyalay</h3>
                             </div>
                             <div class="card-body">
-                                <form action="#">
+                                <form novalidate name="avForm">
                                     <div class="form-body">
                                         <h5 class="card-title">All teachers are requested to fill the below form whenever you send any worksheet/video to the students. </h5>
                                         <hr>
 
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group has-success">
+                                                <div ng-class="{'form-group': true, 'has-success' : avForm.standard.$valid ,'has-danger': !avForm.standard.$valid && (avForm.standard.$touched || isSubmitted)}" >
                                                     <label class="control-label">Standard</label>
-                                                     <select class="form-control custom-select"
+                                                     <select required class="form-control custom-select" name="standard"
                                                         data-placeholder="Select Standard"
                                                              ng-model="standard" >
-                                                              <option value="0">Select Standard</option>
+                                                              <option value="">Select Standard</option>
                                                               <option value="[[x]]" ng-repeat="x in standards">[[x]]</option>
 
                                                      </select>
-
+                                                     <small  ng-if="!avForm.standard.$valid && (avForm.standard.$touched || isSubmitted)" class="form-control-feedback"> Please, select standard. </small>
                                                 </div>
                                             </div>
 
                                             <!--/span-->
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div  ng-class="{'form-group': true, 'has-success' : avForm.division.$valid ,'has-danger': !avForm.division.$valid && (avForm.division.$touched || isSubmitted)}" >
                                                      <label class="control-label">Division</label>
-                                                     <select class="form-control custom-select"
+                                                     <select required class="form-control custom-select" name="division"
                                                         data-placeholder="Select Division"
                                                              ng-model="division" >
-                                                            <option value="0">Select Division</option>
+                                                            <option value="">Select Division</option>
                                                             <option value="[[x]]" ng-repeat="x in divisions">[[x]]</option>
                                                      </select>
-
+                                                     <small  ng-if="!avForm.division.$valid && (avForm.division.$touched || isSubmitted)" class="form-control-feedback"> Please, select division. </small>
                                                 </div>
                                             </div>
                                             <!--/span-->
@@ -49,15 +49,17 @@
 
                                         <div class="row">
                                             <div class="col-md-6 ">
-                                                <div class="form-group">
-                                                    <label>Subject</label>
-                                                    <input type="text" ng-model="subject" class="form-control">
+                                                <div ng-class="{'form-group': true, 'has-success' : avForm.subject.$valid ,'has-danger': !avForm.subject.$valid && (avForm.subject.$touched || isSubmitted)}">
+                                                    <label>Subject *</label>
+                                                    <input required type="text" ng-model="subject" name ="subject" class="form-control">
+                                                    <small  ng-if="!avForm.subject.$valid && (avForm.subject.$touched || isSubmitted)" class="form-control-feedback"> Please, enter subject. </small>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div ng-class="{'form-group': true, 'has-success' : avForm.doh.$valid ,'has-danger': !avForm.doh.$valid && (avForm.doh.$touched || isSubmitted)}">
                                                     <label class="control-label">Please select date of homework </label>
-                                                    <input type="date"  ng-model="doh"  class="form-control" placeholder="dd/mm/yyyy">
+                                                    <input required type="date"  ng-model="doh"  name="doh" class="form-control" placeholder="dd/mm/yyyy">
+                                                    <small  ng-if="!avForm.dohsd.$valid && (avForm.doh.$touched || isSubmitted)" class="form-control-feedback"> Please, enter date of homework. </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -65,27 +67,29 @@
 
                                          <div class="row">
                                            <div class="col-md-6 ">
-                                                <div class="form-group">
+                                                <div ng-class="{'form-group': true, 'has-success' : avForm.name.$valid ,'has-danger': !avForm.name.$valid && (avForm.name.$touched || isSubmitted)}">
                                                     <label>Your Name</label>
-                                                    <input type="text"  ng-model="name"  class="form-control">
+                                                    <input required type="text"  ng-model="name" name="name"  class="form-control">
+                                                    <small  ng-if="!avForm.name.$valid && (avForm.name.$touched || isSubmitted)" class="form-control-feedback"> Please, enter Name. </small>
                                                 </div>
                                             </div>
                                             <!--/span-->
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div  ng-class="{'form-group': true, 'has-success' : avForm.toh.$valid ,'has-danger': !avForm.toh.$valid && (avForm.toh.$touched || isSubmitted)}">
                                                     <label class="control-label">Type of Homework</label>
                                                     <div class="mb-2">
                                                         <label class="custom-control custom-radio">
-                                                            <input id="radio5" name="radio"  ng-model="toh"  type="radio"
+                                                            <input required id="radio5" name="toh"  ng-model="toh"  type="radio"
                                                                 class="custom-control-input" value="Video">
                                                             <span class="custom-control-label">Video</span>
                                                         </label>
                                                         <label class="custom-control custom-radio">
-                                                            <input id="radio6" name="radio"  ng-model="toh"  type="radio"
+                                                            <input required id="radio6" name="toh"  ng-model="toh"  type="radio"
                                                                 class="custom-control-input"  value="Worksheet">
                                                             <span class="custom-control-label">Worksheet</span>
                                                         </label>
                                                     </div>
+                                                    <small  ng-if="!avForm.toh.$valid && (avForm.toh.$touched || isSubmitted)" class="form-control-feedback"> Please, select homework. </small>
                                                 </div>
                                             </div>
                                             <!--/span-->
@@ -93,17 +97,18 @@
                                         <!--/row-->
                                          <div class="row">
                                            <div class="col-md-12 ">
-                                                <div class="form-group">
+                                                <div   ng-class="{'form-group': true, 'has-success' : avForm.dessoh.$valid ,'has-danger': !avForm.dessoh.$valid && (avForm.dessoh.$touched || isSubmitted)}">
                                                     <label>Please enter description of homework </label>
-                                                    <textarea  class="form-control"  ng-model="dessoh"> </textarea>
+                                                    <textarea required  class="form-control" name="dessoh"  ng-model="dessoh"> </textarea>
+                                                    <small  ng-if="!avForm.dessoh.$valid && (avForm.dessoh.$touched || isSubmitted)" class="form-control-feedback"> Please, select homework. </small>
                                                 </div>
                                             </div>
                                          </div>
 
                                     </div>
                                     <div class="form-actions">
-                                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i>
-                                            Save</button>
+                                        <button  class="btn btn-success" ng-click="submitTeacher(avForm.$valid)"> <i class="fa fa-check"></i>
+                                            Submit</button>
                                         <button type="button" class="btn btn-inverse">Cancel</button>
                                     </div>
                                 </form>
