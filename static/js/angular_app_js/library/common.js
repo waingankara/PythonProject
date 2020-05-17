@@ -1,0 +1,1 @@
+﻿var app= angular.module('vidyalayData', []); // angular.module('whizAdmin', ['angular.chosen']);
