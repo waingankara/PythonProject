@@ -55,7 +55,7 @@ angular.module('vidyalayData', []).controller('questionaire', [
 					confirmButtonClass: "btn btn-success"
 
 				}).catch(swal.noop);
-
+                 resetHomework();
                 $scope.isSubmitted = true;
             }, function errorCallback(response) {
                  var result = response.data;
@@ -66,7 +66,7 @@ angular.module('vidyalayData', []).controller('questionaire', [
 					confirmButtonClass: "btn btn-info",
 					buttonsStyling: false
 				   }).catch(swal.noop)
-				   resetHomework();
+
                  $scope.isSubmitted = true;
             });
         }
