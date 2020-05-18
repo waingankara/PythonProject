@@ -1,6 +1,6 @@
 import sqlite3
 from sqlite3 import Error
-import json
+import csv
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
@@ -77,11 +77,18 @@ def select_all_homeworks():
     # create a database connection
     conn = create_connection(database)
 
+    sqlQuery = ''' SELECT id as srNo, standard,division,subject, strftime('%d/%m/%Y', date_of_homework) as date_of_homework,
+          teacher_name,type_of_homework,desc_of_homework, strftime('%d/%m/%Y', upload_timestamp) as upload_date FROM homeworkUpload
+    '''
+
     cur = conn.cursor()
-    cur.execute("SELECT * FROM homeworkUpload")
+    cur.execute(sqlQuery)
 
     rows = cur.fetchall()
 
-    result = json.dumps(rows)
+    with open('output.csv', 'wb') as f:
+        writer = csv.writer(f)
+        writer.writerow(['srNo', 'standard', 'division','subject','date_of_homework','teacher_name','type_of_homework','desc_of_homework','upload_date'])
+        writer.writerows(rows)
 
-    return result
+    return rows

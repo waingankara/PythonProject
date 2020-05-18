@@ -32,6 +32,11 @@ angular.module('vidyalayData', []).controller('questionaire', [
         $scope.dessoh = "";
     }
 
+    $scope.resetForm = function(){
+        resetHomework();
+    }
+
+
     $scope.submitTeacher = function(isValid){
         $scope.isSubmitted = true;
 
@@ -55,7 +60,8 @@ angular.module('vidyalayData', []).controller('questionaire', [
 					confirmButtonClass: "btn btn-success"
 
 				}).catch(swal.noop);
-                 resetHomework();
+               // $window.location.reload();
+                resetHomework();
                 $scope.isSubmitted = true;
             }, function errorCallback(response) {
                  var result = response.data;
